@@ -108,7 +108,7 @@ public void refresh(HttpServletRequest request  ,HttpServletResponse response  )
 
 	String access_token=JWT.create()
 			.withSubject(user.getCorreo())
-			.withExpiresAt(new Date(System.currentTimeMillis()+1*60*1000))
+			.withExpiresAt(new Date(System.currentTimeMillis()+1000 * 61 * 60))
 			.withIssuer(request.getRequestURL().toString()).withIssuer(request.getRequestURL().toString())
 			.withClaim("roles", user.getRoles().stream().map(Roles::getConcepto)
 					.collect(Collectors.toList())).sign(algorithm);

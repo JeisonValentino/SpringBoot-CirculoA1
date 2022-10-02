@@ -17,6 +17,7 @@ import org.hibernate.annotations.NotFoundAction;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -40,5 +41,6 @@ private String Nombre;
     private String gradoInstruccion;
     @Transient
     private String nombreCompleto;
+    private Date fechaCreacion;
 
 }

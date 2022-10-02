@@ -2,17 +2,9 @@ package com.ProyectoEmpresarial.app.entity.Estudiantes;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
@@ -33,9 +25,9 @@ public class Estado_Estudiante implements Serializable {
 
 	private Date fechadeCambio;
 
-	 @JsonBackReference(value="estadoEstudianteLogin")
-	 @OneToOne(mappedBy = "estadoEstudiante_id")
-	private Estudiante Estudiantes_id;
+
+	 @OneToMany(mappedBy = "estadoEstudiante_id" , cascade =CascadeType.ALL )
+	private List<Estudiante> Estudiantes_id;
 
 
 	public Integer getId() {

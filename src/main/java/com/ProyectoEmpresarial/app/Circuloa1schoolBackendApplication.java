@@ -1,6 +1,7 @@
 package com.ProyectoEmpresarial.app;
 
 import org.modelmapper.ModelMapper;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EnableJpaAuditing
-public class Circuloa1schoolBackendApplication extends SpringBootServletInitializer {
+public class Circuloa1schoolBackendApplication extends SpringBootServletInitializer implements CommandLineRunner {
 
     public static void main(String[] args) {
 
@@ -25,5 +26,10 @@ public class Circuloa1schoolBackendApplication extends SpringBootServletInitiali
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("hola a todos ");
     }
 }

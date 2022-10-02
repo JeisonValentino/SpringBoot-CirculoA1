@@ -3,20 +3,10 @@ package com.ProyectoEmpresarial.app.entity.Estudiantes;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.*;
 import lombok.*;
@@ -90,16 +80,17 @@ public class Estudiante implements Serializable  {
 
 			private File id_files;
 
-	@JsonManagedReference(value="estadoEstudianteLogin")
-	@OneToOne(cascade = CascadeType.ALL)
+
+	@ManyToOne(optional = false,fetch = FetchType.LAZY)
 	@JoinColumn(name = "estadoEstudiante_id", referencedColumnName = "id")
 	private Estado_Estudiante estadoEstudiante_id;
 
 
 @OneToMany(cascade =CascadeType.ALL  ,mappedBy = "idEstudiante")
-List<ContactoEstudiantes> idContactoEstudiantes;
+private List<ContactoEstudiantes> idContactoEstudiantes;
 
-
+	@OneToMany(cascade =CascadeType.ALL  ,mappedBy = "estudiante_id")
+	private List<NotificacionEstudiantes> notificacionEstudiantesList;
 
 	  @OneToMany(cascade = CascadeType.ALL, mappedBy = "estudiante_id")
 	  private List<LoginEstudiantes> loginEstudiante;
@@ -120,7 +111,8 @@ List<ContactoEstudiantes> idContactoEstudiantes;
 	    @Transient
 	    private String nombreCompleto;
 
-
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaCreacion;
 
 
 
