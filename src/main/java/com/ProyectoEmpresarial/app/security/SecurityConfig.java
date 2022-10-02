@@ -57,7 +57,7 @@ this.bCryptPasswordEncoder=bCryptPasswordEncoder;
 
 		http.csrf().disable();
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.cors().and().authorizeRequests().antMatchers("/System/login/**","/users/token/refresh/**").permitAll();
+		http.cors().and().authorizeRequests().antMatchers("/System/login/**","/users/token/refresh/**", "/").permitAll();
 		http.authorizeRequests().antMatchers(HttpMethod.GET, "/user/**");
 		http.authorizeRequests().antMatchers(HttpMethod.POST, "/user/save/**");
 		http.authorizeRequests().anyRequest().authenticated();
